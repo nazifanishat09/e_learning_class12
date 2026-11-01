@@ -1,36 +1,35 @@
+import 'package:class12/src/view/appData.dart';
 import 'package:flutter/material.dart';
 
-class CustomTextField extends StatefulWidget {
+class CustomTextField extends StatelessWidget {
   const CustomTextField({
     super.key,
     required this.title,
     required this.keyboard,
-    this.suffixicon, this.password,
+    this.suffixicon,  this.isClick = false,
   });
   final String title;
   final TextInputType keyboard;
   final Widget? suffixicon;
-  final bool? password;
+  final bool isClick ;
 
-  @override
-  State<CustomTextField> createState() => _CustomTextFieldState();
-}
-
-class _CustomTextFieldState extends State<CustomTextField> {
-  bool isClick = true;
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextField(cursorColor: primaryColor,
+
       obscureText: isClick,
-      keyboardType: widget.keyboard,
+      keyboardType: keyboard,
       scrollPadding: EdgeInsets.only(bottom: 7000),
       decoration: InputDecoration(
-        suffixIcon: widget.suffixicon,
-        hintText: widget.title,
+        suffixIcon: suffixicon,
+        hintText: title,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(color: Colors.grey),
         ),
+        focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(color: primaryColor)
+        )
       ),
     );
   }
