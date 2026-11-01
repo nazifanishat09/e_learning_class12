@@ -17,7 +17,6 @@ class _HomescreenState extends State<Homescreen> {
     {'title': 'All', 'icon': Icons.home_filled, 'color': Colors.blue},
     {'title': 'Male', 'icon': Icons.boy, 'color': Colors.black},
     {'title': 'FeMale', 'icon': Icons.girl, 'color': Colors.pink},
-    {'title': 'Custom', 'icon': Icons.transgender, 'color': Colors.greenAccent},
   ];
   int selected = 0;
   List i = [
@@ -68,336 +67,340 @@ class _HomescreenState extends State<Homescreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            spacing: 10,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CustomTextWidget(
-                        title: 'Hi, Nazifa 👋',
-                        fS: 24,
-                        fW: FontWeight.w600,
-                      ),
-                      CustomTextWidget(
-                        title: 'Find comfortable boarding houses nearby',
-                        fS: 15,
-                        fW: FontWeight.w600,
-                        fC: Colors.grey,
-                      ),
-                    ],
-                  ),
-                  Container(
-                    height: 40,
-                    width: 40,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(40),
-                    ),
-                    child: Icon(Icons.notifications_none),
-                  ),
-                ],
-              ),
-              SizedBox(height: 10),
-              Container(
-                height: 40,
-                width: 230,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(15),
-                  border: Border.all(color: colorG),
-                ),
-                child: Row(
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+
+            child: Column(
+              spacing: 10,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Icon(Icons.location_on, color: primaryColor),
-                    CustomTextWidget(
-                      title: 'Kallynpur,Dhaka',
-                      fS: 18,
-                      fW: FontWeight.w500,
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CustomTextWidget(
+                          title: 'Hi, Nazifa 👋',
+                          fS: 24,
+                          fW: FontWeight.w600,
+                        ),
+                        CustomTextWidget(
+                          title: 'Find comfortable boarding houses nearby',
+                          fS: 15,
+                          fW: FontWeight.w600,
+                          fC: Colors.grey,
+                        ),
+                      ],
                     ),
-                    Icon(Icons.keyboard_arrow_down_outlined),
+                    Container(
+                      height: 40,
+                      width: 40,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(40),
+                      ),
+                      child: Icon(Icons.notifications_none),
+                    ),
                   ],
                 ),
-              ),
-
-
-              SizedBox(
-                height: 50,
-                child: CustomTextField(
-                  title: 'Search boarding houses, locations, or campuses...',
-                  prefixIcon: Icon(Icons.search),
-                  keyboard: TextInputType.text,
-                ),
-              ),
-
-              SizedBox(
-                height: 70,
-                child: ListView.builder(
-                  itemCount: gender.length,
-                  scrollDirection: Axis.horizontal,
-                  shrinkWrap: true,
-                  physics: BouncingScrollPhysics(),
-
-                  itemBuilder: (c, v) {
-                    return GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          selected = v;
-                        });
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: Container(
-                          height: 50,
-                          width: 100,
-                          decoration: BoxDecoration(
-                            color: colorW,
-                            border: Border.all(
-                              color: selected == v ? primaryColor : Colors.grey,
-                              width: selected == v ? 3 : 1,
-                            ),
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Icon(
-                                gender[v]['icon'],
-                                color: gender[v]['color'] as Color,size: 37,
-                              ),
-                              CustomTextWidget(
-                                title: '${gender[v]['title']}',
-                                fS: 16,
-                                fW: FontWeight.w600,
-                                fC: primaryColor,
-                              ),
-                            ],
-                          ),
-                        ),
+                SizedBox(height: 10),
+                Container(
+                  height: 40,
+                  width: 230,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(15),
+                    border: Border.all(color: colorG),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Icon(Icons.location_on, color: primaryColor),
+                      CustomTextWidget(
+                        title: 'Kallynpur,Dhaka',
+                        fS: 18,
+                        fW: FontWeight.w500,
                       ),
-                    );
-                  },
+                      Icon(Icons.keyboard_arrow_down_outlined),
+                    ],
+                  ),
                 ),
-              ),
 
-              CarouselSlider(
-                options: CarouselOptions(
-                  height: 200,
-                  autoPlay: true,
-                  autoPlayInterval: Duration(seconds: 4),
-                  autoPlayAnimationDuration: Duration(milliseconds: 900),
-
-                  viewportFraction: 1.0,
+                SizedBox(
+                  height: 50,
+                  child: CustomTextField(
+                    title: 'Search boarding houses, locations, or campuses...',
+                    prefixIcon: Icon(Icons.search),
+                    keyboard: TextInputType.text,
+                  ),
                 ),
-                items: i.map((imageUrl) {
-                  return Builder(
-                    builder: (BuildContext context) {
-                      return Container(
-                        width: MediaQuery.of(context).size.width,
-                        margin: EdgeInsets.symmetric(horizontal: 5.0),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
 
-                          image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: NetworkImage(imageUrl),
+                SizedBox(
+                  height: 70,
+                  child: ListView.builder(
+                    itemCount: gender.length,
+                    scrollDirection: Axis.horizontal,
+                    shrinkWrap: true,
+                    physics: BouncingScrollPhysics(),
+
+                    itemBuilder: (c, v) {
+                      return GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            selected = v;
+                          });
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Container(
+                            height: 50,
+                            width: 100,
+                            decoration: BoxDecoration(
+                              color: colorW,
+                              border: Border.all(
+                                color: selected == v
+                                    ? primaryColor
+                                    : Colors.grey,
+                                width: selected == v ? 3 : 1,
+                              ),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Icon(
+                                  gender[v]['icon'],
+                                  color: gender[v]['color'] as Color,
+                                  size: 37,
+                                ),
+                                CustomTextWidget(
+                                  title: '${gender[v]['title']}',
+                                  fS: 16,
+                                  fW: FontWeight.w600,
+                                  fC: primaryColor,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       );
                     },
-                  );
-                }).toList(),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  CustomTextWidget(
-                    title: 'Nearby Boarding Houses',
-                    fS: 15,
-                    fW: FontWeight.w600,
                   ),
-                  CustomTextWidget(
-                    title: 'See All',
-                    fS: 15,
-                    fW: FontWeight.w600,
-                    fC: primaryColor,
+                ),
+
+                CarouselSlider(
+                  options: CarouselOptions(
+                    height: 200,
+                    autoPlay: true,
+                    autoPlayInterval: Duration(seconds: 4),
+                    autoPlayAnimationDuration: Duration(milliseconds: 900),
+
+                    viewportFraction: 1.0,
                   ),
-                ],
-              ),
+                  items: i.map((imageUrl) {
+                    return Builder(
+                      builder: (BuildContext context) {
+                        return Container(
+                          width: MediaQuery.of(context).size.width,
+                          margin: EdgeInsets.symmetric(horizontal: 5.0),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
 
-              SizedBox(
-                height: 250,
-                child: ListView.builder(
-                  itemCount: product.length,
-                  scrollDirection: Axis.horizontal,
+                            image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: NetworkImage(imageUrl),
+                            ),
+                          ),
+                        );
+                      },
+                    );
+                  }).toList(),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CustomTextWidget(
+                      title: 'Nearby Boarding Houses',
+                      fS: 15,
+                      fW: FontWeight.w600,
+                    ),
+                    CustomTextWidget(
+                      title: 'See All',
+                      fS: 15,
+                      fW: FontWeight.w600,
+                      fC: primaryColor,
+                    ),
+                  ],
+                ),
 
-                  itemBuilder: (c, v) {
-                    return Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Container(
-                        height: 240,
-                        width: 160,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: colorW,
-                          boxShadow: [
-                            BoxShadow(offset: Offset(0, 0), blurRadius: 6),
-                          ],
-                        ),
-                        child: Column(
-                          spacing: 2,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Stack(
-                              children: [
-                                ClipRRect(
-                                  borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(20),
-                                    topRight: Radius.circular(20),
+                SizedBox(
+                  height: 250,
+                  child: ListView.builder(
+                    itemCount: product.length,
+                    scrollDirection: Axis.horizontal,
+
+                    itemBuilder: (c, v) {
+                      return Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Container(
+                          height: 240,
+                          width: 160,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: colorW,
+                            boxShadow: [
+                              BoxShadow(offset: Offset(0, 0), blurRadius: 6),
+                            ],
+                          ),
+                          child: Column(
+                            spacing: 2,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Stack(
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(20),
+                                      topRight: Radius.circular(20),
+                                    ),
+                                    child: Image.network(
+                                      product[v]['img'],
+                                      height: 120,
+                                      width: double.infinity,
+                                      fit: BoxFit.fill,
+                                    ),
                                   ),
-                                  child: Image.network(
-                                    product[v]['img'],
-                                    height: 120,
-                                    width: double.infinity,
-                                    fit: BoxFit.fill,
-                                  ),
-                                ),
-                                Positioned(
-                                  top: 8,
-                                  child: Row(
-                                    spacing: 20,
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.all(4),
-                                        child: Container(
-                                          height: 30,
-                                          width: 90,
-                                          decoration: BoxDecoration(
-                                            color: product[v]['color'],
-                                            borderRadius: BorderRadius.circular(
-                                              20,
-                                            ),
-                                          ),
-                                          child: Center(
-                                            child: CustomTextWidget(
-                                              title: product[v]['gender'],
-                                              fS: 15,
-                                              fC:
-                                                  product[v]['Textcolor']
-                                                      as Color,
-                                              fW: FontWeight.w600,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-
-                                      Padding(
-                                        padding: const EdgeInsets.all(4),
-                                        child: InkWell(
-                                          onTap: () {
-                                            setState(() {
-                                              isClick[v] = !isClick[v];
-                                            });
-                                          },
+                                  Positioned(
+                                    top: 8,
+                                    child: Row(
+                                      spacing: 20,
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.all(4),
                                           child: Container(
                                             height: 30,
-                                            width: 30,
+                                            width: 90,
                                             decoration: BoxDecoration(
-                                              color: Colors.white,
+                                              color: product[v]['color'],
                                               borderRadius:
-                                                  BorderRadius.circular(40),
+                                                  BorderRadius.circular(20),
                                             ),
-                                            child: isClick[v]
-                                                ? Icon(
-                                                    Icons.favorite,
-                                                    color: Colors.red,
-                                                  )
-                                                : Icon(Icons.favorite_border),
+                                            child: Center(
+                                              child: CustomTextWidget(
+                                                title: product[v]['gender'],
+                                                fS: 15,
+                                                fC:
+                                                    product[v]['Textcolor']
+                                                        as Color,
+                                                fW: FontWeight.w600,
+                                              ),
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
 
-                            Padding(
-                              padding: const EdgeInsets.only(left: 5),
-                              child: CustomTextWidget(
-                                title: product[v]['name'],
-                                fS: 18,
-                                fW: FontWeight.w600,
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 5),
-                              child: Row(
-                                children: [
-                                  Icon(Icons.star, color: Colors.amber),
-                                  CustomTextWidget(
-                                    title: '4.8',
-                                    fS: 15,
-                                    fW: FontWeight.w600,
-                                    fC: Colors.grey,
-                                  ),
-                                  CustomTextWidget(
-                                    title: '(124)',
-                                    fS: 13,
-                                    fW: FontWeight.w600,
-                                    fC: Colors.grey,
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 5),
-                              child: Row(
-                                children: [
-                                  Icon(Icons.location_on, color: Colors.grey),
-                                  CustomTextWidget(
-                                    title: product[v]['location'],
-                                    fS: 15,
-                                    fW: FontWeight.w600,
-                                    fC: Colors.grey,
+                                        Padding(
+                                          padding: const EdgeInsets.all(4),
+                                          child: InkWell(
+                                            onTap: () {
+                                              setState(() {
+                                                isClick[v] = !isClick[v];
+                                              });
+                                            },
+                                            child: Container(
+                                              height: 30,
+                                              width: 30,
+                                              decoration: BoxDecoration(
+                                                color: Colors.white,
+                                                borderRadius:
+                                                    BorderRadius.circular(40),
+                                              ),
+                                              child: isClick[v]
+                                                  ? Icon(
+                                                      Icons.favorite,
+                                                      color: Colors.red,
+                                                    )
+                                                  : Icon(Icons.favorite_border),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ],
                               ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 8),
-                              child: Row(
-                                children: [
-                                  CustomTextWidget(
-                                    title: 'Rp800,000',
-                                    fS: 15,
-                                    fW: FontWeight.w700,
-                                    fC: primaryColor,
-                                  ),
-                                  CustomTextWidget(
-                                    title: '/month',
-                                    fS: 13,
-                                    fW: FontWeight.w600,
-                                    fC: Colors.grey,
-                                  ),
-                                ],
+
+                              Padding(
+                                padding: const EdgeInsets.only(left: 5),
+                                child: CustomTextWidget(
+                                  title: product[v]['name'],
+                                  fS: 18,
+                                  fW: FontWeight.w600,
+                                ),
                               ),
-                            ),
-                          ],
+                              Padding(
+                                padding: const EdgeInsets.only(left: 5),
+                                child: Row(
+                                  children: [
+                                    Icon(Icons.star, color: Colors.amber),
+                                    CustomTextWidget(
+                                      title: '4.8',
+                                      fS: 15,
+                                      fW: FontWeight.w600,
+                                      fC: Colors.grey,
+                                    ),
+                                    CustomTextWidget(
+                                      title: '(124)',
+                                      fS: 13,
+                                      fW: FontWeight.w600,
+                                      fC: Colors.grey,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 5),
+                                child: Row(
+                                  children: [
+                                    Icon(Icons.location_on, color: Colors.grey),
+                                    CustomTextWidget(
+                                      title: product[v]['location'],
+                                      fS: 15,
+                                      fW: FontWeight.w600,
+                                      fC: Colors.grey,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 8),
+                                child: Row(
+                                  children: [
+                                    CustomTextWidget(
+                                      title: 'Rp800,000',
+                                      fS: 15,
+                                      fW: FontWeight.w700,
+                                      fC: primaryColor,
+                                    ),
+                                    CustomTextWidget(
+                                      title: '/month',
+                                      fS: 13,
+                                      fW: FontWeight.w600,
+                                      fC: Colors.grey,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    );
-                  },
+                      );
+                    },
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
