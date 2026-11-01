@@ -110,8 +110,8 @@ class _HomescreenState extends State<Homescreen> {
                 width: 230,
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: Colors.grey),
+                  borderRadius: BorderRadius.circular(15),
+                  border: Border.all(color: colorG),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -126,7 +126,7 @@ class _HomescreenState extends State<Homescreen> {
                   ],
                 ),
               ),
-              SizedBox(height: 5),
+
 
               SizedBox(
                 height: 50,
@@ -170,7 +170,7 @@ class _HomescreenState extends State<Homescreen> {
                             children: [
                               Icon(
                                 gender[v]['icon'],
-                                color: gender[v]['color'] as Color,
+                                color: gender[v]['color'] as Color,size: 37,
                               ),
                               CustomTextWidget(
                                 title: '${gender[v]['title']}',

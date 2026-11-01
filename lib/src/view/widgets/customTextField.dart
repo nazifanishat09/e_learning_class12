@@ -14,6 +14,7 @@ class CustomTextField extends StatelessWidget {
   final bool isClick ;
   final Icon? prefixIcon;
 
+
   @override
   Widget build(BuildContext context) {
     return TextField(cursorColor: primaryColor,
@@ -25,10 +26,11 @@ class CustomTextField extends StatelessWidget {
         suffixIcon: suffixicon,prefixIcon: prefixIcon,
         hintText: title,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(20),
           borderSide: BorderSide(color: colorG),
-        ),
-        focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(10),
+        ),enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(20),
+            borderSide: BorderSide(color: colorG),),
+        focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(20),
           borderSide: BorderSide(color: primaryColor),
         )
       ),
