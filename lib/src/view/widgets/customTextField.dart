@@ -6,12 +6,13 @@ class CustomTextField extends StatelessWidget {
     super.key,
     required this.title,
     required this.keyboard,
-    this.suffixicon,  this.isClick = false,
+    this.suffixicon,  this.isClick = false, this.prefixIcon,
   });
   final String title;
   final TextInputType keyboard;
   final Widget? suffixicon;
   final bool isClick ;
+  final Icon? prefixIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -20,15 +21,15 @@ class CustomTextField extends StatelessWidget {
       obscureText: isClick,
       keyboardType: keyboard,
       scrollPadding: EdgeInsets.only(bottom: 7000),
-      decoration: InputDecoration(
-        suffixIcon: suffixicon,
+      decoration: InputDecoration(fillColor: colorW,filled: true,
+        suffixIcon: suffixicon,prefixIcon: prefixIcon,
         hintText: title,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: BorderSide(color: Colors.grey),
+          borderSide: BorderSide(color: colorG),
         ),
         focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(10),
-          borderSide: BorderSide(color: primaryColor)
+          borderSide: BorderSide(color: primaryColor),
         )
       ),
     );

@@ -22,7 +22,7 @@ class LogInButton extends StatelessWidget {
       child: Container(
         height: 50,
         width: 350,
-        decoration: BoxDecoration(
+        decoration: BoxDecoration(border: Border.all(color: colorG),
           color: primaryColor,
           borderRadius: BorderRadius.circular(15),
         ),
